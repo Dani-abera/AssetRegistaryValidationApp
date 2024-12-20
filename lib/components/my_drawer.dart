@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:food_delivery/components/my_drawer_tile.dart';
+import 'package:food_delivery/pages/login_page.dart';
 
 import '../pages/setting_page.dart';
 
@@ -12,12 +13,20 @@ class MyDrawer extends StatelessWidget {
       backgroundColor: Theme.of(context).colorScheme.background,
       child: Column(
         children: [
-          Padding(
-            padding: const EdgeInsets.only(top: 100.0),
-            child: Icon(
-              Icons.lock_open_rounded,
-              size: 80,
-              color: Theme.of(context).colorScheme.inversePrimary,
+          Container(
+            width: MediaQuery.of(context).size.width,
+            height: 250,
+            color: Colors.blue,
+            child: Center(
+              child: CircleAvatar(
+                radius: 50,
+                backgroundColor: Colors.grey.shade300,
+                child: Icon(
+                  Icons.person, // Icon for placeholder
+                  size: 50,
+                  color: Colors.grey.shade600,
+                ),
+              ),
             ),
           ),
           Padding(
@@ -41,11 +50,37 @@ class MyDrawer extends StatelessWidget {
               );
             },
           ),
+          MyDrawerTile(
+            text: 'C R E A T   A C C O U N T',
+            icon: Icons.account_box,
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => SettingPage()),
+              );
+            },
+          ),
+          MyDrawerTile(
+            text: 'V A L I D A T O R',
+            icon: Icons.folder,
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => SettingPage()),
+              );
+            },
+          ),
           const Spacer(),
           MyDrawerTile(
             text: 'L O G O U T',
             icon: Icons.logout,
-            onTap: () {},
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => LoginPage(onTap: () {})),
+              );
+            },
           ),
           SizedBox(
             height: 25,

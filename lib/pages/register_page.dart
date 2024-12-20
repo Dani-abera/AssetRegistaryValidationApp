@@ -1,3 +1,4 @@
+import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 
 import '../components/my_button.dart';
@@ -16,6 +17,39 @@ class _RegisterPageState extends State<RegisterPage> {
   final TextEditingController _confirmPasswordField = TextEditingController();
   final TextEditingController _passwordField = TextEditingController();
 
+  String? selectedEducationLevel;
+
+  // List of education levels
+  final List<String> educationLevels = [
+    'High School',
+    'Associate Degree',
+    'Bachelor\'s Degree',
+    'Master\'s Degree',
+    'Doctoral Degree',
+  ];
+
+  // Variable to hold selected file name or path
+  String? fileName;
+
+  // Function to pick a file
+  Future<void> pickFile() async {
+    // Use FilePicker to pick a file
+    FilePickerResult? result = await FilePicker.platform.pickFiles();
+
+    if (result != null) {
+      // If a file is selected, get the file name
+      setState(() {
+        fileName = result
+            .files.single.name; // Or use result.files.single.path for file path
+      });
+    } else {
+      // Handle the case when no file is selected
+      setState(() {
+        fileName = null;
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,7 +58,7 @@ class _RegisterPageState extends State<RegisterPage> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Icon(
-            Icons.lock_open_rounded,
+            Icons.app_registration,
             size: 100,
             color: Theme.of(context).colorScheme.inversePrimary,
           ),
@@ -32,7 +66,7 @@ class _RegisterPageState extends State<RegisterPage> {
             height: 25,
           ),
           Text(
-            "Let's Create Account For you",
+            "Fill out the form carefully.",
             style: TextStyle(
                 fontSize: 16,
                 color: Theme.of(context).colorScheme.inversePrimary),
@@ -50,7 +84,7 @@ class _RegisterPageState extends State<RegisterPage> {
           ),
           MyTextField(
             controller: _passwordField,
-            hintText: "Password",
+            hintText: "Full Name",
             obscureText: true,
           ),
           SizedBox(
@@ -58,14 +92,61 @@ class _RegisterPageState extends State<RegisterPage> {
           ),
           MyTextField(
             controller: _confirmPasswordField,
-            hintText: "Confirm Password",
+            hintText: "Education Level",
             obscureText: true,
+          ),
+
+          // Education Level Dropdown with custom style
+          Padding(
+            padding: const EdgeInsets.all(25.0),
+            child: DropdownButtonFormField<String>(
+              value: selectedEducationLevel,
+              hint: Text('Select Education Level'),
+              onChanged: (String? newValue) {
+                setState(() {
+                  selectedEducationLevel = newValue;
+                });
+              },
+              validator: (value) {
+                if (value == null || value.isEmpty) {
+                  return 'Please select your education level';
+                }
+                return null;
+              },
+              items:
+                  educationLevels.map<DropdownMenuItem<String>>((String value) {
+                return DropdownMenuItem<String>(
+                  value: value,
+                  child: Text(value),
+                );
+              }).toList(),
+              decoration: InputDecoration(
+                hintText: 'Select Education Level',
+                enabledBorder: OutlineInputBorder(
+                  borderSide:
+                      BorderSide(color: Theme.of(context).colorScheme.tertiary),
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderSide:
+                      BorderSide(color: Theme.of(context).colorScheme.primary),
+                ),
+              ),
+            ),
+          ),
+
+          MyButton(
+            text: fileName ?? 'Upload You CV and Certifications',
+
+            onTap: pickFile,
+
+            // Button to pick a file
           ),
           SizedBox(
             height: 25,
           ),
+
           MyButton(
-            text: "Sign Up",
+            text: "Register",
             onTap: () {},
           ),
           SizedBox(

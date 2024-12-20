@@ -32,7 +32,7 @@ class MyCurrentLocation extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            'Delver now',
+            "Location for Data Processing",
             style: TextStyle(color: Theme.of(context).colorScheme.primary),
           ),
           GestureDetector(
@@ -41,7 +41,7 @@ class MyCurrentLocation extends StatelessWidget {
               children: [
                 // address
                 Text(
-                  'Bati Ethiopia',
+                  'Addis Abeba Ethiopia',
                   style: TextStyle(
                       fontWeight: FontWeight.bold,
                       color: Theme.of(context).colorScheme.primary),

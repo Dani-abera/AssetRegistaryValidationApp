@@ -44,7 +44,7 @@ class _LoginPageState extends State<LoginPage> {
             height: 25,
           ),
           Text(
-            "Food Delivery App",
+            "Welcome to another workday!",
             style: TextStyle(
                 fontSize: 16,
                 color: Theme.of(context).colorScheme.inversePrimary),
@@ -89,7 +89,7 @@ class _LoginPageState extends State<LoginPage> {
               GestureDetector(
                 onTap: widget.onTap,
                 child: Text(
-                  'Register now',
+                  "Register as a Validator Today!",
                   style: TextStyle(
                       fontWeight: FontWeight.bold,
                       color: Theme.of(context).colorScheme.inversePrimary),

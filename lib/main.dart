@@ -17,7 +17,7 @@ void main() {
         ),
         // ChangeNotifierProvider for Restaurant to manage restaurant-related state
         ChangeNotifierProvider(
-          create: (context) => Restaurant(),
+          create: (context) => AssetRegistry(),
         ),
       ],
       // MyApp is the root widget of the application
@@ -34,7 +34,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo', // Title of the application
+      title: 'Asset App', // Title of the application
       // The theme of the app is provided by ThemeProvider
       theme: Provider.of<ThemeProvider>(context).themeData,
       // The home property defines the default route of the app

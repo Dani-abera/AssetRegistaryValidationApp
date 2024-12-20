@@ -24,7 +24,7 @@ class _HomePageState extends State<HomePage>
   void initState() {
     super.initState();
     _controller =
-        TabController(length: FoodCategory.values.length, vsync: this);
+        TabController(length: AssetCategory.values.length, vsync: this);
   }
 
   @override
@@ -33,14 +33,15 @@ class _HomePageState extends State<HomePage>
     super.dispose();
   }
 
-  List<Food> _filterFoodMenuByCatagory(
-      FoodCategory category, List<Food> fullMenu) {
+  List<Assetd> _filterFoodMenuByCatagory(
+      AssetCategory category, List<Assetd> fullMenu) {
     return fullMenu.where((food) => food.category == category).toList();
   }
 
-  List<Widget> getFoodInThisCatagory(List<Food> fullMenu) {
-    return FoodCategory.values.map((catagory) {
-      List<Food> catagotyMenu = _filterFoodMenuByCatagory(catagory, fullMenu);
+  List<Widget> getFoodInThisCatagory(List<Assetd> fullMenu) {
+    return AssetCategory.values.map((catagory) {
+      List<Assetd> catagotyMenu = _filterFoodMenuByCatagory(catagory, fullMenu);
+
       return ListView.builder(
         itemCount: catagotyMenu.length,
         physics: NeverScrollableScrollPhysics(),
@@ -75,10 +76,10 @@ class _HomePageState extends State<HomePage>
                   ),
                 ),
               ],
-          body: Consumer<Restaurant>(
+          body: Consumer<AssetRegistry>(
               builder: (context, restaurant, child) => TabBarView(
                   controller: _controller,
-                  children: getFoodInThisCatagory(restaurant.menu)))),
+                  children: getFoodInThisCatagory(restaurant.assets)))),
     );
   }
 }

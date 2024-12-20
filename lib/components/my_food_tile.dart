@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:food_delivery/pages/food_page.dart';
+import 'package:food_delivery/pages/asset_page.dart';
 
 import '../models/food.dart';
 
 class MyFoodTile extends StatelessWidget {
-  final Food food;
+  final Assetd food;
   final void Function()? onTap;
   const MyFoodTile({super.key, required this.food, this.onTap});
 
@@ -15,11 +15,7 @@ class MyFoodTile extends StatelessWidget {
         GestureDetector(
           onTap: () {
             Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => FoodPage(
-                          food: food,
-                        )));
+                context, MaterialPageRoute(builder: (context) => AssetPage()));
           },
           child: Padding(
             padding: const EdgeInsets.all(15.0),

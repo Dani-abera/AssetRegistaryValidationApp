@@ -6,7 +6,7 @@ class MyTabBar extends StatelessWidget {
   const MyTabBar({super.key, required this.controller});
 
   List<Tab> _buildCategoryTabs() {
-    return FoodCategory.values.map((category) {
+    return AssetCategoryd.values.map((category) {
       return Tab(
         text: category.toString().split('.').last,
       );

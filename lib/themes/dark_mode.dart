@@ -2,11 +2,16 @@ import 'package:flutter/material.dart';
 
 ThemeData darkMode = ThemeData(
   colorScheme: ColorScheme.dark(
-    background: Color.fromARGB(255, 20, 20, 20),
-    primary: Color.fromARGB(255, 122, 122, 122),
-    secondary: Color.fromARGB(255, 30, 30, 30),
-    tertiary: Color.fromARGB(255, 47, 47, 47),
-    inversePrimary: Colors.grey.shade300,
+    background:
+        Color.fromARGB(255, 28, 28, 30), // Dark background for a clean look
+    primary: Color.fromARGB(255, 56, 56,
+        58), // A darker primary color for buttons and active elements
+    secondary: Color.fromARGB(
+        255, 44, 44, 46), // Secondary color for less emphasized elements
+    tertiary:
+        Color.fromARGB(255, 72, 72, 74), // Used for inputs and form fields
+    inversePrimary:
+        Colors.white, // White text on dark background for readability
   ),
 );
 
